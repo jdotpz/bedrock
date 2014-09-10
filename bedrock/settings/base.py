@@ -91,9 +91,8 @@ def JINJA_CONFIG():
         'auto_reload': True,
     }
 
-# We do not allow media uploads but this must be set different from STATIC_URL
-MEDIA_URL = '/unused/'
-STATIC_URL = '/media/'
+STATIC_URL = '/static/'
+STATIC_ROOT = path('static')
 
 JINGO_MINIFY_USE_STATIC = False
 CACHEBUST_IMGS = False
@@ -815,10 +814,11 @@ INSTALLED_APPS = get_apps(exclude=(
     'session_csrf',
     'djcelery',
 ), append=(
-    # Local apps
+    # third-party apps
     'jingo_markdown',
     'jingo_minify',
     'django_statsd',
+    'pagedown',
     'waffle',
     'south',
 
