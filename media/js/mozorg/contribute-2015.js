@@ -101,9 +101,9 @@
         if ($('#'+oldarea).length > 0) {
             $('#'+oldarea).fadeOut('fast', function(){
                 $('#'+categoryarea).fadeIn('fast', function(){
-                    $(this).find('select').focus();
+                    $(this).find('select').attr('required', true).focus();
                 });
-                $('#'+oldarea).find('select').prop('selectedIndex', 0);
+                $('#'+oldarea).find('select').prop('selectedIndex', 0).attr('required', false);
             });
         } else {
             $('#'+categoryarea).fadeIn('fast');
@@ -129,7 +129,7 @@
 
     $('#inquiry-form .info').on('mouseleave blur', function() {
         var $this = $(this);
-        var tooltip = $this.parent('.option').find('.tooltip');
+        var tooltip = $this.parents('.option').find('.tooltip');
         tooltip.delay(100).fadeOut('fast', function() {
             tooltip.remove();
         });

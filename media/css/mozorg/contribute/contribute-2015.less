@@ -69,7 +69,9 @@ textarea {
     font-size: 16px;
     padding: .5em 8px;
     width: 100%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
     .transition(border-color .2s ease);
 }
 
@@ -77,12 +79,6 @@ input:focus,
 select:focus,
 textarea:focus {
     background: #fff;
-}
-
-input:hover,
-select:hover,
-textarea:hover {
-//    border-color: darken(@darkbeige, 10%);
 }
 
 .select {
@@ -94,13 +90,16 @@ textarea:hover {
     overflow: hidden;
     width: auto;
     max-width: 100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
     .transition(border-color .2s ease);
 
     select {
         font-size: inherit;
         font-family: inherit;
-        width: 120%;
-        padding: .4em 20% .4em 6px;
+        width: 100%;
+        padding: .425em 20% .425em 6px;
         outline: none;
         line-height: 1.2;
         text-overflow: '';
@@ -110,6 +109,11 @@ textarea:hover {
 
         &::-ms-expand {
           display: none;
+        }
+
+        &:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 @textColorPrimary;
         }
     }
 
@@ -131,22 +135,25 @@ textarea:hover {
         bottom: 0;z-index: 1;
         text-align: center;
     }
-
-    &:hover {
-        border-color: darken(@darkbeige, 10%);
-    }
 }
 
 .select.focus {
     background: #fff;
     box-shadow: 0 0 0 2px rgba(73, 173, 227, .4);
-    border-color: darken(@darkbeige, 10%);
+    border-color: #42a4e0;
 
     select {
         outline: 0;
-        border: 0;
+        .box-shadow(none);
+
+        &:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 @textColorPrimary;
+        }
     }
 }
+
+
 
 
 /*-------------------------------------------------------------------------*/
@@ -910,7 +917,7 @@ textarea:hover {
         padding: 30px 0;
 
         li {
-            .span(4);
+            .span(3);
             text-align: left;
             margin-bottom: 20px;
         }
@@ -927,13 +934,26 @@ textarea:hover {
         }
 
         .form-message {
-            .span(12);
+            .span-all();
             margin-bottom: 20px;
+        }
+
+        .form-agree {
+            .span-all();
+            margin-bottom: 20px;
+
+            label {
+                font-size: 14px;
+            }
         }
 
         .form-newsletter {
             .span-all();
             text-align: center;
+        }
+
+        .select {
+            width: 100%;
         }
     }
 
@@ -954,13 +974,12 @@ textarea:hover {
             left: 50%;
             margin-left: -220px;
         }
+    }
 
-        input[type='checkbox'] {
-            width: 16px;
-            height: 16px;
-            font-size: 16px;
-        }
-
+    input[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
     }
 }
 
@@ -1037,7 +1056,7 @@ textarea:hover {
             width: 120px;
             padding: 0 20px;
             position: absolute;
-            top: 180px;
+            top: 175px;
             left: 0;
             color: @textColorPrimary;
         }
@@ -1045,11 +1064,11 @@ textarea:hover {
 
     .info {
         position: absolute;
-        bottom: 1.1em;
-        right: 15px;
-        display: block;
-        height: 30px;
-        width: 30px;
+        top: 175px;
+        right: 0;
+        display: inline-block;
+        height: 20px;
+        width: 20px;
         overflow: hidden;
         text-indent: 120%;
         white-space: nowrap;
@@ -1067,8 +1086,8 @@ textarea:hover {
             height: 20px;
             width: 20px;
             position: absolute;
-            right: 5px;
-            bottom: 5px;
+            right: 0;
+            bottom: 0;
         }
     }
 
@@ -1076,8 +1095,8 @@ textarea:hover {
         display: none;
         width: 240px;
         position: absolute;
-        top: 220px;
-        right: -25px;
+        top: 210px;
+        right: -55px;
         background: #eee;
         color: @textColorPrimary;
         font-size: 12px;
@@ -1091,7 +1110,7 @@ textarea:hover {
         &:after {
             position: absolute;
             left: auto;
-            right: 45px;
+            right: 55px;
             border-color: #eee transparent;
         }
     }
